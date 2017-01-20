@@ -87,7 +87,7 @@ pub type dev_t = u32;
 pub type nlink_t = u32;
 pub type uid_t = u32;
 pub type gid_t = u32;
-pub type off_t = i32;
+pub type off_t = i64;
 pub type blksize_t = i32;
 pub type blkcnt_t = c_ulong;
 pub type fsblkcnt_t = uint64_t;
@@ -97,6 +97,8 @@ pub type suseconds_t = i32;
 pub type error_t = c_int;
 
 pub enum timezone {}
+
+pub enum _reent {}
 
 #[repr(C)]
 #[derive(Copy, Clone)]

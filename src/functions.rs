@@ -1,16 +1,22 @@
 extern "C" {
-    pub fn __errno() -> *const ::c_int;
+    pub fn _reclaim_reent(arg1: *mut ::_reent);
+    pub fn __getreent() -> *mut ::_reent;
+    pub fn _open_r(arg1: *mut ::_reent, arg2: *const ::c_char,
+                   arg3: ::c_int, arg4: ::c_int) -> ::c_int;
+    pub fn abort() -> !;
+	pub fn chdir(dir: *const ::c_char) -> ::c_int;
     pub fn chmod(path: *const ::c_char, mode: ::mode_t) -> ::c_int;
-    pub fn clock_gettime(clk_id: ::clockid_t, tp: *mut ::timespec) -> ::c_int;
     pub fn close(fd: ::c_int) -> ::c_int;
     pub fn closedir(dirp: *mut ::DIR) -> ::c_int;
     pub fn exit(status: ::c_int) -> !;
+    pub fn fchmod(fd: ::c_int, mode: ::mode_t) -> ::c_int;
     pub fn fcntl(fd: ::c_int, cmd: ::c_int, ...) -> ::c_int;
     pub fn fdatasync(fd: ::c_int) -> ::c_int;
     pub fn free(p: *mut ::c_void);
     pub fn fstat(fildes: ::c_int, buf: *mut ::stat) -> ::c_int;
     pub fn ftruncate(fd: ::c_int, length: ::off_t) -> ::c_int;
     pub fn fsync(fd: ::c_int) -> ::c_int;
+	pub fn getcwd(buf: *mut ::c_char, size: ::size_t) -> *mut ::c_char;
     pub fn gettimeofday(tp: *mut ::timeval, tz: *mut ::c_void) -> ::c_int;
     pub fn link(src: *const ::c_char, dst: *const ::c_char) -> ::c_int;
     pub fn lstat(path: *const ::c_char, buf: *mut ::stat) -> ::c_int;
@@ -20,6 +26,8 @@ extern "C" {
     pub fn mkdir(path: *const ::c_char, mode: ::mode_t) -> ::c_int;
     pub fn open(path: *const ::c_char, oflag: ::c_int, ...) -> ::c_int;
     pub fn opendir(dirname: *const ::c_char) -> *mut ::DIR;
+    pub fn pread(fd: ::c_int, buf: *mut ::c_void, count: ::size_t, offset: ::off_t) -> ::ssize_t;
+    pub fn pwrite(fd: ::c_int, buf: *const ::c_void, count: ::size_t, offset: ::off_t) -> ::ssize_t;
     pub fn read(fd: ::c_int, puf: *mut ::c_void, count: ::size_t) -> ::ssize_t;
     pub fn readlink(path: *const ::c_char, buf: *mut ::c_char, bufsz: ::size_t) -> ::ssize_t;
     pub fn readdir_r(dirp: *mut ::DIR, entry: *mut ::dirent, result: *mut *mut ::dirent) -> ::c_int;
