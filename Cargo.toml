@@ -1,5 +1,5 @@
 [package]
-name = "libc"
+name = "ctr-libc"
 version = "0.1.0"
 authors = ["Fenrir <fenrirwolf@gmail.com>", "The Rust Project Developers"]
 license = "MIT/Apache 2.0"
@@ -9,6 +9,5 @@ A library for types and bindings to native C functions found in newlib
 for devkitARM
 """
 
-[features]
-default = ["use_std"]
-use_std = []
+[build-dependencies]
+bindgen = "0.23"
